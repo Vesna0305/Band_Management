@@ -1,0 +1,1 @@
+ALTER TABLE members MODIFY image VARCHAR(100) NULL;

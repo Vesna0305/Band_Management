@@ -1,0 +1,1 @@
+ALTER TABLE genre MODIFY genre_name VARCHAR(20);

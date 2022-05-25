@@ -1,0 +1,1 @@
+ALTER TABLE band ADD band_description TEXT NULL;

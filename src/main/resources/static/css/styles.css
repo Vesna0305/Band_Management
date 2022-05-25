@@ -1,0 +1,76 @@
+.body {
+  background: #5F5F5F;
+  background: linear-gradient(to right, #5F5F5F, #AFAFAF);
+}
+
+.parent-container
+{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    align-content: space-around;
+ }
+
+ .child-container
+ {
+    font-family: 'Comfortaa', cursive;
+    text-transform: uppercase;
+    font-color: white;
+    padding: 35px;
+ }
+
+.child-container a
+{
+    opacity: 0.5;
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.child-container a:hover
+{
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.child-container2
+{
+    /*position:relative;*/
+    top:0;
+    bottom:35px;
+    left:0;
+    right:0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+ }
+
+
+  .child-container2 p a
+  {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     opacity: 0.4;
+     text-decoration: none;
+     font-family: 'Comfortaa', cursive;
+     text-transform: uppercase;
+     color: white;
+     padding: 5px;
+     font-size: 12px;
+  }
+
+ .child-container2 p a:hover
+  {
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+  }

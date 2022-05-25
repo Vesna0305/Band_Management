@@ -1,0 +1,3 @@
+ALTER TABLE band DROP COLUMN image;
+
+ALTER TABLE band ADD image BLOB NULL;

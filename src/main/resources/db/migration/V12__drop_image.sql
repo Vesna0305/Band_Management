@@ -1,0 +1,1 @@
+ALTER TABLE band DROP COLUMN image;

@@ -1,0 +1,39 @@
+.body {
+  background: #5F5F5F;
+  background: linear-gradient(to right, #5F5F5F, #AFAFAF);
+}
+
+
+.main-container
+{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    align-content: space-around;
+ }
+
+ .child-container a
+ {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5;
+    text-decoration: none;
+    font-family: 'Comfortaa', cursive;
+    text-transform: uppercase;
+    color: white;
+    padding: 5px;
+ }
+
+.child-container a:hover
+ {
+     color: white;
+     text-decoration: none;
+     font-size: 18px;
+ }

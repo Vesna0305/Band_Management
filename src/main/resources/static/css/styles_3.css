@@ -1,0 +1,94 @@
+.body {
+  background: #5F5F5F;
+  background: linear-gradient(to right, #5F5F5F, #AFAFAF);
+}
+
+.parent-container
+{
+    position:absolute;
+    top:30px;
+    left:0;
+    right:0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    align-content: space-around;
+ }
+
+ .child-container
+ {
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+    /*text-transform: uppercase;*/
+    font-color: white;
+    padding: 35px;
+ }
+
+.child-container a
+{
+    opacity: 0.5;
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.child-container a:hover
+{
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+ .child-container img
+ {
+      width: 100%;
+      height: auto;
+ }
+
+.child-container2
+{
+
+    text-align: center;
+}
+
+.topnav-right {
+  float: right;
+}
+
+.topnav {
+    z-index: 1;
+    position: sticky;
+    list-style: none;
+    background: #555555;
+    top: 0;
+    position: fixed;
+    width: 100%;
+
+}
+
+.topnav a {
+    float: left;
+    text-decoration: none;
+    color: white;
+    opacity: 0.5;
+    font-family: 'Comfortaa', cursive;
+    text-transform: uppercase;
+    padding: 2px;
+    display: block;
+}
+
+.topnav a:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 0.5;
+    font-family: 'Comfortaa', cursive;
+    text-transform: uppercase;
+}
+
+.navbar {
+      overflow: hidden;
+      position: fixed;
+      top:0;
+      width: 100%;
+}
