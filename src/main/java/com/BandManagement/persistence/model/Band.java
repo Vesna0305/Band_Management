@@ -1,12 +1,12 @@
 package com.BandManagement.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Setter
@@ -31,23 +31,25 @@ public class Band {
 
     @Column(columnDefinition = "TEXT")
     private String bandDescription;
-
-    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id")
     private Genre genre;
-
-    @OneToMany(mappedBy="band")
+    @JsonIgnore
+    @OneToMany(mappedBy="band", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Member> member;
+    @JsonIgnore
+    @OneToMany(mappedBy="band", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Album> albums;
+    @JsonIgnore
+    @OneToMany(mappedBy="band", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<News> news;
 
     @Transient
     public String getPhotosImagePath() {
         if (photo == null || id == null) return null;
 
         return "/band-photos/" + id + "/" + photo;
-    }
-
-    public void replaceAll() {
-        getBandDescription().replaceAll("\n\r", "<br>");
     }
 
 }

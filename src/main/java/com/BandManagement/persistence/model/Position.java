@@ -5,7 +5,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.UUID;
+import java.util.*;
 
 @Setter
 @Getter
@@ -20,5 +20,16 @@ public class Position {
 
     @Column(length = 30, nullable = false)
     String positionName;
+
+    @ManyToMany(mappedBy="positions")
+    private Set<Member> members = new HashSet<>();
+
+    public Set<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(Set<Member> members) {
+        this.members = members;
+    }
 
 }

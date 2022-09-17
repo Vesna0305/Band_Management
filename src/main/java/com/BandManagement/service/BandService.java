@@ -1,6 +1,6 @@
 package com.BandManagement.service;
 
-import com.BandManagement.dto.BandGenreDto;
+import com.BandManagement.web.dto.BandGenreDto;
 import com.BandManagement.persistence.model.Band;
 import com.BandManagement.persistence.repositories.BandRepository;
 import com.BandManagement.persistence.repositories.GenreRepository;

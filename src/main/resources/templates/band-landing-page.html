@@ -20,16 +20,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
 </head>
-<body style="background-color:#5F5F5F">
-    <div class="main-container">
-        <div class="child-container">
-            <p></p><a th:href="@{/bands/about/{id}(id=${band.id})}">ABOUT</a></p>
-            <p></p><a th:href="@{/bands/about/{id}(id=${band.id})}">NEWS</a></p>
-            <p></p><a th:href="@{/bands/member/{id}(id=${band.id})}">MEMBERS</a></p>
-            <p></p><a th:href="@{/bands/about/{id}(id=${band.id})}">ALBUMS</a></p>
-            <p></p><a th:href="@{/bands/about/{id}(id=${band.id})}">VIDEOS</a></p>
-            <p></p><a th:href="@{/bands/about/{id}(id=${band.id})}">STORE</a></p>
-        </div>
-    </div>
+<body style="background: linear-gradient(to bottom, #2E2932 10%,
+                                                    #5E5368 50%,
+                                                    #2E2932 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2E2932', endColorstr='#2E2932',GradientType=0);">
+
+            <div class="main-container">
+                <div class="child-container" style="font-size:25px;">
+                    <p></p><a th:href="@{/bands/about/{id}(id=${band.id})}">ABOUT</a></p>
+                    <p></p><a th:href="@{/bands/news/{id}(id=${band.id})}">NEWS</a></p>
+                    <p></p><a th:href="@{/bands/member/{id}(id=${band.id})}">MEMBERS</a></p>
+                    <p></p><a th:href="@{/bands/albums/{id}(id=${band.id})}">MUSIC</a></p>
+                    <p></p><a th:href="@{/bands/store/{id}(id=${band.id})}">STORE</a></p>
+                </div>
+            </div>
 </body>
 </html>

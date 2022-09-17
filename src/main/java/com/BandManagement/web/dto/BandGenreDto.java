@@ -1,4 +1,4 @@
-package com.BandManagement.dto;
+package com.BandManagement.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

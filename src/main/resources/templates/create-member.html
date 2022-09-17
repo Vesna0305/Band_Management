@@ -8,7 +8,6 @@
 
 <link th:rel="stylesheet" th:href="@{/css/styles_2.css}">
 <link th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
@@ -19,35 +18,57 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Multiselect CSS -->
+    <link rel="stylesheet" href="css/bootstrap-multiselect.css">
+
+    <!-- Bootstrap Multiselect JS -->
+    <script data-main="dist/js/" src="js/require.min.js"></script>
 </head>
-<body style="background-color:#5F5F5F">
+<body style="background: linear-gradient(to bottom, #2E2932 10%,
+                                                    #5E5368 50%,
+                                                    #2E2932 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2E2932', endColorstr='#2E2932',GradientType=0);">
 <div class="container px-5 my-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="card border-0 rounded-3 shadow-lg">
                 <div class="card-body p-4">
                     <div class="text-center">
-                        <div class="h1 fw-light">Add a New Band Member</div>
+                        <div class="h3 fw-light">Add a new band member</div>
                         <p class="mb-4 text-muted">Form for admin user to create a new member and assign it to a band.</p>
                     </div>
 
                     <form action="#" th:action="@{/members/addMember}" th:object="${member}" enctype="multipart/form-data" method="post" data-sb-form-api-token="API_TOKEN">
 
                         <!-- First name Input -->
-                        <div class="form-floating mb-3">
+                        <div class="form-group">
                             <b>Enter first name</b>
                             <label for="firstName" class="col-form-label"></label><input type="text" data-sb-validations="required" th:field="*{firstName}" class="form-control" id="firstName"> <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
                         </div>
 
                         <!-- Last name Input -->
-                        <div class="form-floating mb-3">
+                        <div class="form-group">
                             <b>Enter last name</b>
                             <label for="lastName" class="col-form-label"></label><input type="text" data-sb-validations="required" th:field="*{lastName}" class="form-control" id="lastName"> <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
                         </div>
 
+                        <!-- Date of birth Input -->
+                        <div class="form-group input-with-post-icon datepicker">
+                            <b>Enter date of birth</b>
+                            <label for="dateOfBirth" class="col-form-label"></label><input type="date" data-sb-validations="required" th:field="*{dateOfBirth}" class="form-control" id="dateOfBirth"> <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></span>
+                        </div>
+
+
+                        <!-- Member description -->
+                        <div class="form-group">
+                            <b>Write something about the member</b>
+                            <label for="memberDescription" class="col-form-label"></label><textarea type="text" style="white-space:pre-warp" data-sb-validations="required" th:field="*{memberDescription}" class="form-control" id="memberDescription"></textarea><span th:if="${#fields.hasErrors('memberDescription')}" th:errors="*{memberDescription}"></span>
+                        </div>
+
                         <!-- Band Input -->
-                        <div class="form-floating mb-3">
-                            <b>Pick band</b>
+                        <div class="form-group">
+                            <b>Select band</b>
                             <span class="input-status" data-toggle="tooltip" data-placement="top" title="Please select band."> </span>
                             <label for="band"></label>
                             <select class="form-control" id="band" name="band" th:field="*{band}">
@@ -59,14 +80,28 @@
                             </select>
                         </div>
 
-                        <!-- Image Upload -->
-                        <div class="form-floating mb-3">
-                            <input name="image" type="file" accept="image/png, image/jpeg, image/jpg"><br/>
+                        <!--Position Input-->
+                        <div class="form-group">
+                            <b>Select one or more positions</b>
+                            <br>
+                            <span class="input-status" data-toggle="tooltip" data-placement="top" title="Please select a position."> </span>
+                            <div class="form-control">
+                                <th:block th:each="position: ${positions}">
+                                <input type="checkbox" th:field="*{positions}"
+                                                    th:text="${position.positionName}"
+                                                    th:value="${position.id}" class="m-2" />
+                            </th:block>
+                            </div>
                         </div>
+
+                        <!-- Image Upload -->
+                        <label class="form-label" for="customFile"><b>Upload an image of the member</b></label>
+                        <input name="image" type="file" class="form-control" id="customFile" accept="image/png, image/jpeg, image/jpg" /><br>
+
                         <!-- Submit button -->
                         <div class="d-grid">
                             <br>
-                            <button type="submit" class="btn btn-secondary btn-lg btn-block">Submit</button>
+                            <button style="background-color:#21002C;color:white;" type="submit" class="btn btn-secondary btn-lg btn-block">Submit</button>
                         </div>
                     </form>
 
@@ -75,5 +110,34 @@
         </div>
     </div>
 </div>
+<br>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script src="multiple-select.js"></script>
+<script>
+    &lt;!&ndash;$("#position").multipleSelect({
+        filter: true
+    });&ndash;&gt;
+       $(function() {
+        $('#position').change(function() {
+            console.log($(this).val());
+        }).multipleSelect({
+            width: '100%'
+        });
+    });
+</script>
+<script>
+require(['bootstrap-multiselect'], function(purchase){
+$('#mySelect').multiselect();
+});
+</script>
+<script>
+$$('#prefill').datepicker({
+
+});
+</script>
 </html>

@@ -1,6 +1,5 @@
 package com.BandManagement.api;
 
-import com.BandManagement.persistence.model.Band;
 import com.BandManagement.persistence.model.Genre;
 import com.BandManagement.persistence.repositories.GenreRepository;
 import com.BandManagement.service.GenreService;

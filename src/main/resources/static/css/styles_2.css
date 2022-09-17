@@ -1,8 +1,6 @@
-.body {
-  background: #5F5F5F;
-  background: linear-gradient(to right, #5F5F5F, #AFAFAF);
+html {
+  height: 100%;
 }
-
 
 .main-container
 {
@@ -35,5 +33,5 @@
  {
      color: white;
      text-decoration: none;
-     font-size: 18px;
+     font-size: 26px;
  }

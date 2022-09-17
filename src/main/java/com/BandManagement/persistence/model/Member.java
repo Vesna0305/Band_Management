@@ -1,12 +1,12 @@
 package com.BandManagement.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.UUID;
+import java.util.*;
 
 @Setter
 @Getter
@@ -26,21 +26,26 @@ public class Member {
     String lastName;
 
     @Column()
-    private String photo;
+    String dateOfBirth;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @Column(columnDefinition = "TEXT")
+    private String memberDescription;
+
+    @Column()
+    private String photo;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "band_id")
     private Band band;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "member_position",
             joinColumns = @JoinColumn(
                     name = "member_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "position_id", referencedColumnName = "id"))
-
-    private Collection<Position> positions;
+    private Set<Position> positions = new HashSet<>();
 
     @Transient
     public String getPhotosImagePath() {
@@ -48,5 +53,14 @@ public class Member {
 
         return "/member-photos/" + id + "/" + photo;
     }
+
+    public Set<Position> getPositions() {
+        return positions;
+    }
+
+    public void setPositions(Set<Position> positions) {
+        this.positions = positions;
+    }
+
 
 }

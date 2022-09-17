@@ -1,10 +1,4 @@
-.body {
-  background: #5F5F5F;
-  background: linear-gradient(to right, #5F5F5F, #AFAFAF);
-}
-
-.parent-container
-{
+.parent-container {
     position:absolute;
     top:30px;
     left:0;
@@ -16,39 +10,32 @@
     align-content: space-around;
  }
 
- .child-container
- {
+ .child-container {
     text-align: center;
     font-family: 'Comfortaa', cursive;
-    /*text-transform: uppercase;*/
     font-color: white;
     padding: 35px;
  }
 
-.child-container a
-{
+.child-container a {
     opacity: 0.5;
     color: white;
     text-decoration: none;
     font-size: 22px;
 }
 
-.child-container a:hover
-{
+.child-container a:hover {
     color: white;
     text-decoration: none;
     font-size: 22px;
 }
 
- .child-container img
- {
+ .child-container img {
       width: 100%;
       height: auto;
  }
 
-.child-container2
-{
-
+.child-container2 {
     text-align: center;
 }
 
@@ -60,11 +47,10 @@
     z-index: 1;
     position: sticky;
     list-style: none;
-    background: #555555;
+    background: #2E2932;
     top: 0;
     position: fixed;
     width: 100%;
-
 }
 
 .topnav a {
@@ -73,7 +59,7 @@
     color: white;
     opacity: 0.5;
     font-family: 'Comfortaa', cursive;
-    text-transform: uppercase;
+    font-size: 14px;
     padding: 2px;
     display: block;
 }
@@ -83,7 +69,7 @@
     color: white;
     opacity: 0.5;
     font-family: 'Comfortaa', cursive;
-    text-transform: uppercase;
+
 }
 
 .navbar {
@@ -91,4 +77,19 @@
       position: fixed;
       top:0;
       width: 100%;
+}
+
+//TRACKS
+ .child-container3 {
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+    font-color: white;
+    padding: 20px;
+ }
+
+.child-container3 a {
+    opacity: 0.5;
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
 }

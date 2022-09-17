@@ -14,6 +14,9 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         exposeDirectory("band-photos", registry);
+        exposeDirectory("member-photos", registry);
+        exposeDirectory("album-photos", registry);
+        exposeDirectory("product-photos", registry);
     }
 
     private void exposeDirectory(String dirName, ResourceHandlerRegistry registry) {

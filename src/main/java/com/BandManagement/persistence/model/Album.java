@@ -1,10 +1,12 @@
 package com.BandManagement.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Setter
@@ -24,11 +26,25 @@ public class Album {
     @Column(length = 4, nullable = false)
     long year;
 
-    @Column(length = 100, nullable = true)
-    String image;
+    @Column()
+    private String photo;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @Column(columnDefinition = "TEXT")
+    private String albumDescription;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "band_id")
     private Band band;
+
+    @JsonIgnore
+    @OneToMany(mappedBy="album", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Track> tracks;
+
+    @Transient
+    public String getPhotosImagePath() {
+        if (photo == null || id == null) return null;
+
+        return "/album-photos/" + id + "/" + photo;
+    }
 
 }

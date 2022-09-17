@@ -1,6 +1,5 @@
 package com.BandManagement.service;
 
-import com.BandManagement.persistence.model.Album;
 import com.BandManagement.persistence.model.Track;
 import com.BandManagement.persistence.repositories.AlbumRepository;
 import com.BandManagement.persistence.repositories.TrackRepository;

@@ -20,14 +20,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
 </head>
-<body style="background-color:#5F5F5F">
+<body style="background: linear-gradient(to bottom, #2E2932 10%,
+                                                    #5E5368 50%,
+                                                    #2E2932 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2E2932', endColorstr='#2E2932',GradientType=0);">
+<br>
 <div class="container px-5 my-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="card border-0 rounded-3 shadow-lg">
                 <div class="card-body p-4">
                     <div class="text-center">
-                        <div class="h1 fw-light">Add a New Music Band</div>
+                        <div class="h3 fw-light">Add a new band</div>
                         <p class="mb-4 text-muted">Form for admin user to create a new band.</p>
                     </div>
 
@@ -48,7 +52,7 @@
                         <!-- Band description -->
                         <div class="form-floating mb-3">
                             <b>Write something about the band</b>
-                            <label for="bandDescription" class="col-form-label"></label><textarea type="text" style="white-space:pre-warp" data-sb-validations="required" th:field="*{bandDescription}" class="form-control" id="bandDescription"></textarea><span th:if="${#fields.hasErrors('bandDescription')}" th:errors="*{bandDescription}"></span>
+                            <label for="bandDescription" class="col-form-label"></label><textarea type="text" style="white-space:pre-line" data-sb-validations="required" th:field="*{bandDescription}" class="form-control" id="bandDescription"></textarea><span th:if="${#fields.hasErrors('bandDescription')}" th:errors="*{bandDescription}"></span>
                         </div>
 
                         <!-- Genre Input -->
@@ -69,10 +73,11 @@
                         <div class="form-floating mb-3">
                                 <input name="image" type="file" accept="image/png, image/jpeg, image/jpg"><br/>
                         </div>
+
                         <!-- Submit button -->
                         <div class="d-grid">
                             <br>
-                            <button type="submit" class="btn btn-secondary btn-lg btn-block">Submit</button>
+                            <button style="background-color:#21002C;color:white;" type="submit" class="btn btn-secondary btn-lg btn-block">Submit</button>
                         </div>
                     </form>
 

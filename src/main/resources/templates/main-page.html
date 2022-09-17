@@ -10,7 +10,7 @@
 <link th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -19,18 +19,47 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <style>
+    a:hover {
+    background-color: #1D1A20;
+    }
+    </style>
 </head>
-<body style="background-color:#5F5F5F">
+<body style="background: linear-gradient(to bottom, #2E2932 10%,
+                                                    #5E5368 50%,
+                                                    #2E2932 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2E2932', endColorstr='#2E2932',GradientType=0);"><!--#27002E-->
+        <div>
+        <nav style="float:right;z-index:10000;" class="navbar navbar-inverse navbar-fixed-top">
+            <span class="navbar-text" style="color:#E8E8E8;">
+                Hey there, <span sec:authentication="principal.username"> User</span>!&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            <a sec:authorize="hasAnyAuthority('ROLE_ADMIN')" style="font-size:16px;color:white;opacity:0.5;">ADMIN</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a sec:authorize="hasAnyAuthority('ROLE_USER')" style="font-size:16px;color:white;opacity:0.5;">CUSTOMER/USER</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </nav>
+
+        </div>
         <div class="parent-container">
-            <div class="child-container" th:each="band : ${bandsList}">
-                <a th:href="@{/bands/band/{id}(id=${band.id})}"><div th:text="${band.bandName}"></div></a>
+            <div class="child-container" th:each="band : ${bandsList}" style="text-align:center;">
+                <a th:href="@{/bands/band/{id}(id=${band.id})}">
+                    <div class="circular--landscape"><img style="opacity:0.6;box-shadow: 0px 0px 30px black;width:300px;height:300px;object-fit:cover;border-radius:50%;" th:src="@{${band.photosImagePath}}"/></div>
+                    <div style="font-size:40px;color:#E8E8E8;" th:text="${band.bandName}"></div>
+                </a>
+                <a sec:authorize="hasAnyAuthority('ROLE_ADMIN')" th:href="@{/bands/delete/{id}(id=${band.id})}" th:attr="onclick='return confirm(\'Are you sure you want to delete this band? By clicking ok, you are deleting the selected band and all its related data.\');'" type="button" class="btn btn" style="font-size:16px;color:white;opacity:0.5;">
+                    delete
+                </a>
+                <a sec:authorize="hasAnyAuthority('ROLE_ADMIN')" th:href="@{/bands/edit/{id}(id=${band.id})}" type="button" class="btn btn" style="font-size:16px;color:white;opacity:0.5;">
+                    edit
+                </a>
+            </div>
+            <div style="position:absolute;top:2%;justify-content:left;text-align:left;">
+                <button style="background-color:#443847;" class="btn btn-secondary"><a th:href="@{/logout}" style="background-color:#443847;color:#E8E8E8;text-decoration:none;text-transform:uppercase;">Log out</a></button>
+            </div>
+            <div style="position:absolute;top:5%;justify-content:center;text-align:center;">
+                <br>
+                <a th:href="@{/bands/addBand}" style="color:#E8E8E8;text-decoration:none;text-align:center;text-transform:uppercase;opacity:0.5;" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" type="button" class="btn btn">Want to add a new band? Click Here!</a>
             </div>
         </div>
-        <div class="child-container2">
-            <p><a th:href="@{/bands/addBand}">Want to add a new band? Click Here!</a></p>
-        </div>
-        <div class="child-container2">
-            <p><a th:href="@{/members/addMember}">Want to add a new member? Click Here!</a></p>
         </div>
 </body>
 </html>

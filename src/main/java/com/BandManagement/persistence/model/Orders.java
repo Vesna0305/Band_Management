@@ -5,6 +5,8 @@ import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,12 +24,27 @@ public class Orders {
     @Column()
     String orderDate;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "order_id")
-    private List<OrdersProduct> products;
+    @Column()
+    Boolean orderStatus;
+
+    @Column()
+    private float totalOrderPrice;
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    /*@JoinColumn(name = "order_id")*/
+    private List<OrdersProduct> ordersProduct;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private Users user;
+
+//    @PrePersist
+//    protected void onCreate() {
+//        this.orderDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+//    }
+
+    public void setOrderDate() {
+        this.orderDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    }
 
 }

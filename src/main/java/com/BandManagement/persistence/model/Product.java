@@ -1,10 +1,12 @@
 package com.BandManagement.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Setter
@@ -21,14 +23,11 @@ public class Product {
     @Column(length = 50, nullable = false)
     String productName;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(columnDefinition = "TEXT")
     String description;
 
-    @Column(length = 100, nullable = false)
-    String image;
-
-    @Column(length = 4, nullable = false)
-    long year;
+    @Column()
+    private String photo;
 
     @Column(nullable = false)
     float unitPrice;
@@ -36,12 +35,25 @@ public class Product {
     @Column()
     int quantity;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id", nullable = false)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "category_id")
     private Categories categories;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "band_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "band_id")
     private Band band;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    /*@JoinColumn(name = "product_id")*/
+    private List<OrdersProduct> ordersProduct;
+
+
+    @Transient
+    public String getPhotosImagePath() {
+        if (photo == null || id == null) return null;
+
+        return "/product-photos/" + id + "/" + photo;
+    }
 
 }

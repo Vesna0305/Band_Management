@@ -1,6 +1,5 @@
 package com.BandManagement.service;
 
-import com.BandManagement.persistence.model.Member;
 import com.BandManagement.persistence.model.Position;
 import com.BandManagement.persistence.repositories.MemberRepository;
 import com.BandManagement.persistence.repositories.PositionRepository;
@@ -34,4 +33,5 @@ public class PositionService {
     public Position getPositionById(UUID id) {
         return positionRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid item Id:" + id));
     }
+
 }

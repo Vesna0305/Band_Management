@@ -1,5 +1,6 @@
 package com.BandManagement.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
@@ -21,14 +22,17 @@ public class Track {
     @Column(length = 30, nullable = false)
     String trackName;
 
-    @Column(length = 4, nullable = false)
+    @Column(length = 4)
     Boolean videoStatus;
 
-    @Column(nullable = true)
+    @Column()
     String videoLink;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "album_id")
     private Album album;
+
+
 
 }

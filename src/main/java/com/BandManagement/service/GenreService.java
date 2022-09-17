@@ -1,7 +1,6 @@
 package com.BandManagement.service;
 
 
-import com.BandManagement.persistence.model.Band;
 import com.BandManagement.persistence.model.Genre;
 import com.BandManagement.persistence.repositories.GenreRepository;
 import lombok.AllArgsConstructor;
